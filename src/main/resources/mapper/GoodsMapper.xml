@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.licong.dao.GoodsDao">
+    <select id="goodsFinfAll" resultType="goods">
+        select *
+        from goods where gstatus=0;
+    </select>
+    <insert id="goodsAdd" parameterType="goods">
+        insert into goods (gname,gprice, gimg, gcreatetime, gstatus, gproperty)
+        values (#{gname}, #{gprice}, #{gimg}, #{gcreatetime}, #{gstatus}, #{gproperty})
+    </insert>
+    <update id="goodsUpadteById" parameterType="goods">
+        update goods
+        <set>
+        <trim suffixOverrides=",">
+            <if test="gname!=null">gname=#{gname},</if>
+            <if test="gprice!=null">gprice=#{gprice},</if>
+            <if test="gcreatetime!=null">gcreatetime=#{gcreatetime},</if>
+            <if test="gstatus!=null">gstatus=#{gstatus},</if>
+            <if test="gproperty!=null">gproperty=#{gproperty},</if>
+        </trim>
+        <where>
+            <if test="gid!=null">gid=#{gid}</if>
+        </where>
+        </set>
+    </update>
+    <update id="goodsDeleteById" parameterType="goods">
+        update goods set gstatus=1 where gid=#{gid}
+    </update>
+</mapper>

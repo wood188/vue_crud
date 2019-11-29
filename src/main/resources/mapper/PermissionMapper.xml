@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.licong.dao.PermissionDao">
+    <select id="selectPer" parameterType="String" resultType="permission">
+        SELECT pe.pname from
+                            user us,
+                            user_roler ur,
+                            roler ro,
+                            roler_perm rp,
+                            permission pe
+        where
+            us.uid=ur.uid
+          and ur.rid=ro.rid
+          and ro.rid=rp.rid
+          and rp.pid=pe.pid
+          and us.uname=#{name}
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.105.131.111:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 965362
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+qiniu:
+  accessKey: xJX1qRamYYsrkYHKtD9YLGaFWIIQcNsmnYjuVKt_
+  secretKey: REXGlqKFd6OUw8ot97WbNYFJII2scs-HJ9087jNz
+  bucket: licong188
+  url: http://q1cw3v594.bkt.clouddn.com/
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.licong.pojo
